@@ -1,0 +1,2657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis ODS4: Team4Tech & EduK'at 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --t4t-teal: #006d86;
+            --t4t-teal-dark: #004d5e;
+            --t4t-teal-light: #008aa8;
+            --t4t-gray: #555555;
+            --t4t-yellow: #f6db52;
+            --t4t-olive: #b5bb51;
+            --t4t-magenta: #b50544;
+            --t4t-orange: #d86c27;
+            --t4t-cream: #e3d8c8;
+            --white: #ffffff;
+            --ods-blue: #0066B3;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--t4t-gray);
+            background: linear-gradient(135deg, #fafafa 0%, var(--t4t-cream) 100%);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--t4t-teal) 0%, var(--t4t-teal-dark) 100%);
+            color: white;
+            padding: 100px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--t4t-yellow) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--t4t-yellow);
+            color: var(--t4t-teal);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--t4t-yellow);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 20px;
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-link {
+            white-space: nowrap;
+            padding: 10px 20px;
+            background: var(--t4t-cream);
+            color: var(--t4t-gray);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--t4t-teal);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--t4t-teal);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: var(--t4t-yellow);
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--t4t-gray);
+            max-width: 800px;
+            margin-top: 25px;
+        }
+
+        /* ODS Indicators Grid */
+        .ods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .ods-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--ods-blue);
+            cursor: pointer;
+        }
+
+        .ods-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .ods-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .ods-number {
+            width: 60px;
+            height: 60px;
+            background: var(--ods-blue);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .ods-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--t4t-teal);
+            line-height: 1.3;
+        }
+
+        .ods-description {
+            font-size: 15px;
+            color: var(--t4t-gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .ods-tag {
+            display: inline-block;
+            background: var(--t4t-cream);
+            color: var(--t4t-gray);
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 3px;
+        }
+
+        /* Organization Cards */
+        .org-section {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .org-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--t4t-cream);
+        }
+
+        .org-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--t4t-teal);
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .org-info h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--t4t-teal);
+            margin-bottom: 5px;
+        }
+
+        .org-info p {
+            font-size: 16px;
+            color: var(--t4t-gray);
+        }
+
+        /* Pillar Cards */
+        .pillars-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .pillar-card {
+            background: linear-gradient(135deg, #fafafa 0%, white 100%);
+            border-radius: 20px;
+            padding: 35px;
+            border: 2px solid var(--t4t-cream);
+            transition: all 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--t4t-yellow);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .pillar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .pillar-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--t4t-teal);
+            margin-bottom: 10px;
+        }
+
+        .pillar-objective {
+            font-size: 15px;
+            color: var(--t4t-gray);
+            font-weight: 500;
+        }
+
+        .expand-btn {
+            background: var(--t4t-yellow);
+            color: var(--t4t-gray);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .expand-btn:hover {
+            background: var(--t4t-orange);
+            transform: rotate(90deg);
+        }
+
+        .pillar-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .pillar-content.expanded {
+            max-height: 3000px;
+        }
+
+        .kr-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .kr-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            border-left: 4px solid var(--t4t-olive);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .kr-title {
+            font-weight: 700;
+            color: var(--t4t-teal);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .kr-indicators {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .indicator-badge {
+            background: var(--t4t-cream);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--t4t-gray);
+        }
+
+        /* Objectives Section */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .objective-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--t4t-magenta);
+            transition: all 0.3s ease;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .objective-number {
+            width: 50px;
+            height: 50px;
+            background: var(--t4t-magenta);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .objective-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--t4t-teal);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .objective-content {
+            font-size: 15px;
+            color: var(--t4t-gray);
+        }
+
+        .objective-metrics {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid var(--t4t-cream);
+        }
+
+        .metric-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--t4t-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .metric-list {
+            list-style: none;
+        }
+
+        .metric-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .metric-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--t4t-yellow);
+            font-weight: 700;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, var(--t4t-teal) 0%, var(--t4t-teal-dark) 100%);
+            color: white;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 25px 30px;
+            border-bottom: 1px solid var(--t4t-cream);
+            align-items: start;
+            transition: all 0.3s ease;
+        }
+
+        .table-row:hover {
+            background: #fafafa;
+        }
+
+        .table-cell {
+            font-size: 14px;
+        }
+
+        .table-cell-title {
+            font-weight: 700;
+            color: var(--t4t-teal);
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .table-cell-subtitle {
+            font-size: 13px;
+            color: var(--t4t-gray);
+            opacity: 0.8;
+        }
+
+        .connection-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 3px;
+        }
+
+        .connection-strong {
+            background: #10b981;
+            color: white;
+        }
+
+        .connection-moderate {
+            background: var(--t4t-yellow);
+            color: var(--t4t-gray);
+        }
+
+        .connection-weak {
+            background: var(--t4t-cream);
+            color: var(--t4t-gray);
+        }
+
+        /* Recommendations */
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .recommendation-card {
+            background: linear-gradient(135deg, white 0%, #fafafa 100%);
+            border-radius: 20px;
+            padding: 35px;
+            border: 2px solid var(--t4t-cream);
+            transition: all 0.3s ease;
+        }
+
+        .recommendation-card:hover {
+            border-color: var(--t4t-orange);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .recommendation-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .recommendation-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--t4t-orange);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .recommendation-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--t4t-teal);
+        }
+
+        .recommendation-list {
+            list-style: none;
+        }
+
+        .recommendation-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .recommendation-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--t4t-orange);
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: linear-gradient(135deg, var(--t4t-teal) 0%, var(--t4t-teal-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            margin-top: 80px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--t4t-yellow) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .impact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .impact-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-5px);
+        }
+
+        .impact-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .impact-metric {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--t4t-yellow);
+            margin-bottom: 10px;
+        }
+
+        .impact-label {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--t4t-gray);
+            color: white;
+            padding: 60px 20px 40px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--t4t-yellow);
+        }
+
+        .footer-section p, .footer-section li {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--t4t-yellow);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 40px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .ods-grid,
+            .objectives-grid,
+            .recommendations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .table-header,
+            .table-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .org-section {
+                padding: 30px 20px;
+            }
+
+            .pillar-card {
+                padding: 25px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeInModal 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Modal Content */
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            padding: 0;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUpModal 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @keyframes slideUpModal {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--t4t-teal) 0%, var(--t4t-teal-dark) 100%);
+            color: white;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .modal-indicator {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--t4t-yellow);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .modal-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 0;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 35px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        .modal-section {
+            margin-bottom: 25px;
+        }
+        
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .modal-section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--t4t-teal);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .modal-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--t4t-gray);
+            margin-bottom: 10px;
+        }
+        
+        .modal-text strong {
+            color: var(--t4t-teal);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: #f0f9ff;
+            border-left: 4px solid var(--t4t-teal);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #374151;
+        }
+        
+        .modal-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .modal-tag {
+            background: var(--t4t-cream);
+            color: var(--t4t-gray);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .connection-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .connection-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            color: var(--t4t-gray);
+        }
+        
+        .connection-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .connection-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--t4t-yellow);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        /* Clickable badges */
+        .ods-card {
+            cursor: pointer;
+        }
+
+        .connection-badge {
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .connection-badge::after {
+            content: 'ℹ️';
+            font-size: 14px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .connection-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .connection-badge:hover::after {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .connection-badge:active {
+            transform: translateY(0);
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-container,
+            .expand-btn,
+            .modal-overlay {
+                display: none;
+            }
+
+            .pillar-content {
+                max-height: none !important;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <div class="hero fade-in">
+        <div class="hero-content">
+            <span class="hero-badge">Análisis Estratégico 2026</span>
+            <h1>Intersecciones ODS4:<br>Team4Tech & EduK'at</h1>
+            <p class="hero-subtitle">Análisis integral de alineación entre indicadores del Objetivo de Desarrollo Sostenible 4 (Educación de Calidad) y los planes operativos 2026</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Indicadores ODS4 Clave</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Organizaciones Analizadas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Objetivos Estratégicos</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Actividades Identificadas</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav class="nav">
+            <a href="#resumen" class="nav-link">Resumen</a>
+            <a href="#indicadores" class="nav-link">Indicadores ODS4</a>
+            <a href="#team4tech" class="nav-link">Team4Tech</a>
+            <a href="#edukat" class="nav-link">EduK'at</a>
+            <a href="#objetivos" class="nav-link">3 Objetivos Clave</a>
+            <a href="#intersecciones" class="nav-link">Tabla de Intersecciones</a>
+            <a href="#recomendaciones" class="nav-link">Recomendaciones</a>
+           
+        </nav>
+    </div>
+
+    <!-- Resumen Ejecutivo -->
+    <section id="resumen" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title">Resumen Ejecutivo</h2>
+            <p class="section-subtitle">Este análisis identifica las conexiones estratégicas entre los indicadores del ODS4 y los planes de trabajo de Team4Tech y EduK'at para 2026, con énfasis en tres objetivos clave relacionados con el fortalecimiento de organizaciones educativas.</p>
+        </div>
+
+        <div class="objectives-grid">
+            <div class="objective-card">
+                <div class="objective-number">1</div>
+                <h3 class="objective-title">Elevar conocimiento y competencias del personal</h3>
+                <p class="objective-content">Formación continua y desarrollo profesional de educadores y líderes de ONGs educativas</p>
+                <div class="objective-metrics">
+                    <div class="metric-label">Conexión Principal</div>
+                    <div class="connection-badge connection-strong">ODS 4.3.1 - Educación Continua</div>
+                    <div class="connection-badge connection-strong">ODS 4.7.1 - Formación Docente</div>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="objective-number">2</div>
+                <h3 class="objective-title">Fortalecer implementación de mejores prácticas</h3>
+                <p class="objective-content">Sistemas de seguimiento y apoyo para adopción sostenida de prácticas basadas en evidencia</p>
+                <div class="objective-metrics">
+                    <div class="metric-label">Conexión Principal</div>
+                    <div class="connection-badge connection-strong">ODS 4.1.1 - Competencias</div>
+                    <div class="connection-badge connection-moderate">ODS 4.1.2 - Finalización</div>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="objective-number">3</div>
+                <h3 class="objective-title">Expandir oportunidades educativas</h3>
+                <p class="objective-content">Mejora de infraestructura, recursos y acceso tecnológico para estudiantes</p>
+                <div class="objective-metrics">
+                    <div class="metric-label">Conexión Principal</div>
+                    <div class="connection-badge connection-strong">ODS 4.4.1 - Habilidades TIC</div>
+                    <div class="connection-badge connection-strong">ODS 4.a.1 - Infraestructura</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Indicadores ODS4 -->
+    <section id="indicadores" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Indicadores Clave del ODS4</h2>
+            <p class="section-subtitle">Siete indicadores principales identificados en los documentos del proyecto que guían el análisis de alineación estratégica</p>
+        </div>
+
+        <div class="ods-grid">
+            <div class="ods-card">
+                <div class="ods-header">
+                    <div class="ods-number">4.1.1</div>
+                    <div class="ods-title">Nivel mínimo de competencia en lectura y matemáticas</div>
+                </div>
+                <p class="ods-description">Proporción de niños y jóvenes que alcanzan nivel mínimo de competencia en lectura y matemáticas en grados 2/3, fin de primaria y fin de secundaria inferior</p>
+                <div>
+                    <span class="ods-tag">Resultados de aprendizaje</span>
+                    <span class="ods-tag">Evaluación</span>
+                    <span class="ods-tag">Calidad educativa</span>
+                </div>
+            </div>
+
+            <div class="ods-card">
+                <div class="ods-header">
+                    <div class="ods-number">4.1.2</div>
+                    <div class="ods-title">Tasa de finalización educativa</div>
+                </div>
+                <p class="ods-description">Porcentaje de cohorte que completa educación primaria, secundaria inferior y superior, 3-5 años después de la edad oficial de graduación</p>
+                <div>
+                    <span class="ods-tag">Acceso</span>
+                    <span class="ods-tag">Permanencia</span>
+                    <span class="ods-tag">Retención escolar</span>
+                </div>
+            </div>
+
+
+        
+
+            <div class="ods-card">
+                <div class="ods-header">
+                    <div class="ods-number">4.3.1</div>
+                    <div class="ods-title">Participación en educación formal y no formal</div>
+                </div>
+                <p class="ods-description">Porcentaje de jóvenes y adultos participando en formación formal o no formal en los últimos 12 meses</p>
+                <div>
+                    <span class="ods-tag">Educación continua</span>
+                    <span class="ods-tag">Aprendizaje adultos</span>
+                    <span class="ods-tag">Desarrollo profesional</span>
+                </div>
+            </div>
+
+            <div class="ods-card">
+                <div class="ods-header">
+                    <div class="ods-number">4.4.1</div>
+                    <div class="ods-title">Habilidades TIC</div>
+                </div>
+                <p class="ods-description">Proporción de jóvenes y adultos con competencias en tecnologías de información y comunicación</p>
+                <div>
+                    <span class="ods-tag">Competencias digitales</span>
+                    <span class="ods-tag">Empleabilidad</span>
+                    <span class="ods-tag">Siglo XXI</span>
+                </div>
+            </div>
+
+            <div class="ods-card">
+                <div class="ods-header">
+                    <div class="ods-number">4.7.1</div>
+                    <div class="ods-title">Educación para Desarrollo Sostenible (EDS) y Ciudadanía Global (ECG)</div>
+                </div>
+                <p class="ods-description">Grado de integración de EDS y ECG en políticas, currículos, formación docente y evaluación estudiantil</p>
+                <div>
+                    <span class="ods-tag">Formación docente</span>
+                    <span class="ods-tag">Políticas educativas</span>
+                    <span class="ods-tag">Currículo</span>
+                </div>
+            </div>
+
+            <div class="ods-card">
+                <div class="ods-header">
+                    <div class="ods-number">4.a.1</div>
+                    <div class="ods-title">Servicios básicos en escuelas</div>
+                </div>
+                <p class="ods-description">Proporción de escuelas con servicios básicos: electricidad, internet, computadoras, agua potable, saneamiento e infraestructura accesible</p>
+                <div>
+                    <span class="ods-tag">Infraestructura</span>
+                    <span class="ods-tag">Tecnología</span>
+                    <span class="ods-tag">Condiciones básicas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team4Tech Plan -->
+    <section id="team4tech" class="section">
+        <div class="org-section">
+            <div class="org-header">
+                <div class="org-logo">T4T</div>
+                <div class="org-info">
+                    <h2>Team4Tech FY26 Work Plan</h2>
+                    <p>Construcción de capacidades de ONGs para implementar prácticas basadas en evidencia que apoyen la empleabilidad</p>
+                </div>
+            </div>
+
+            <div class="pillars-grid">
+                <!-- Pilar 1: CoP -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Pilar 1: Comunidad de Práctica (CoP)</h3>
+                            <p class="pillar-objective">Construir capacidad de las ONGs para implementar prácticas basadas en evidencia</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">KR 1.1 - Crecimiento de membresía</div>
+                                <p>Expansión continua de la comunidad de práctica</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">3,300 miembros (Q4)</span>
+                                    <span class="indicator-badge">1,100 organizaciones (Q4)</span>
+                                    <span class="indicator-badge"># miembros activos</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 1.2 - Compromiso continuo</div>
+                                <p>Mantener participación activa y consistente</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Tasa de compromiso >60%</span>
+                                    <span class="indicator-badge">20+ recursos EBPs/trimestre</span>
+                                    <span class="indicator-badge">2+ eventos mensuales</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 1.3 - Uso activo y aprendizaje</div>
+                                <p>Aplicación efectiva de recursos compartidos</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">85% reportan aplicación de recursos</span>
+                                    <span class="indicator-badge">85% acceso mejorado a EBPs</span>
+                                    <span class="indicator-badge">20% ganancia en conocimiento</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 1.4 - Desarrollo de DISC Skills</div>
+                                <p>Certificaciones en competencias para el siglo XXI</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Certificados de competencia DISC</span>
+                                    <span class="indicator-badge">2 nuevos toolkits (Creatividad, Emprendimiento)</span>
+                                    <span class="indicator-badge">Planes de implementación</span>
+                                    <span class="indicator-badge">Adopción 4-6 meses post-piloto</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 1.6 - Alfabetización en IA</div>
+                                <p>Formación en inteligencia artificial para ONGs</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Curso AI Foundations finalizado</span>
+                                    <span class="indicator-badge">Cohortes con ONGs africanas</span>
+                                    <span class="indicator-badge">Apoyo a 2+ países (Kenia, Senegal)</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pilar 2: Hubs Regionales -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Pilar 2: Hubs Regionales</h3>
+                            <p class="pillar-objective">Programación localizada para construir confianza, fomentar colaboración y generar retroalimentación</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">KR 2.1 - Miembros activos en Hub</div>
+                                <p>Crecimiento sostenido de participación regional</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Asia: 8% incremento/trimestre</span>
+                                    <span class="indicator-badge">Brasil: Q4: 65 miembros</span>
+                                    <span class="indicator-badge">LAC: Q4: 60 miembros</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 2.2 - Miembros contribuyentes</div>
+                                <p>Generación activa de contenido por región</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Asia: Q4: 25</span>
+                                    <span class="indicator-badge">Brasil: Q4: 23</span>
+                                    <span class="indicator-badge">LAC: Q4: 18</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 2.3 - Asistencia a eventos Hub</div>
+                                <p>Participación en eventos regionales</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Asia: Q4: 20 eventos</span>
+                                    <span class="indicator-badge">Brasil: Q4: 13 eventos</span>
+                                    <span class="indicator-badge">LAC: Q4: 11 eventos</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 2.4 - Colaboración entre ONGs</div>
+                                <p>Iniciativas conjuntas y mentorías</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Asia: Q4: 10 colaboraciones</span>
+                                    <span class="indicator-badge">Brasil y LAC: TBD</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 2.5 - Implementación de EBPs</div>
+                                <p>Adopción activa de prácticas basadas en evidencia</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Asia Engaged: Q4: 10 ONGs</span>
+                                    <span class="indicator-badge">Asia Strategic: Q4: 5 ONGs</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 2.6 - Satisfacción de ONGs</div>
+                                <p>Calidad percibida del apoyo recibido</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Asia: >80% satisfacción</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pilar 3: M&E -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Pilar 3: Monitoreo y Evaluación (M&E)</h3>
+                            <p class="pillar-objective">Refinar y embeber M&E en programas para evaluar progreso e impulsar mejora continua</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">KR 3.1 - Instrumentos validados</div>
+                                <p>Herramientas de evaluación embebidas en sistemas</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Pre/post assessments por programa (Q2)</span>
+                                    <span class="indicator-badge">Integración en Salesforce</span>
+                                    <span class="indicator-badge">Instrumentos localizados</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 3.2 - Dashboards integrados</div>
+                                <p>Visualización automática de datos por programa</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Dashboards por programa (Q3)</span>
+                                    <span class="indicator-badge">Filtros por geografía y tipo</span>
+                                    <span class="indicator-badge">Actualizaciones automáticas</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 3.3 - Datos trimestrales oportunos</div>
+                                <p>Captura consistente y puntual de información</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">100% entrada antes del día 15</span>
+                                    <span class="indicator-badge">Reportes resumen trimestrales</span>
+                                    <span class="indicator-badge">90%+ con baseline/midline/endline</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 3.4 - Evaluaciones programáticas regulares</div>
+                                <p>Análisis sistemático para toma de decisiones</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Análisis trimestral CoP</span>
+                                    <span class="indicator-badge">Síntesis semestral de programas</span>
+                                    <span class="indicator-badge">Integración en planificación</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">KR 3.5 - Hallazgos compartidos</div>
+                                <p>Difusión de aprendizajes y patrones identificados</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Síntesis trimestral a equipos</span>
+                                    <span class="indicator-badge">Resumen a socios 1x/trimestre</span>
+                                    <span class="indicator-badge">Patrones documentados</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EduK'at Plan -->
+    <section id="edukat" class="section">
+        <div class="org-section">
+            <div class="org-header">
+                <div class="org-logo" style="background: var(--t4t-orange);">EK</div>
+                <div class="org-info">
+                    <h2>EduK'at Plan Operativo Anual 2026</h2>
+                    <p>Fortalecimiento de red de centros educativos en Guatemala mediante identidad, sistemas y colaboración</p>
+                </div>
+            </div>
+
+            <div class="pillars-grid">
+                <!-- Área 1: Identidad -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Área 1: Identidad y Posicionamiento</h3>
+                            <p class="pillar-objective">Construcción de identidad visual, narrativa y estándares institucionales</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">Construcción de identidad visual y narrativa</div>
+                                <p>Elementos fundacionales de la red</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Nombre de red</span>
+                                    <span class="indicator-badge">Logo y eslogan</span>
+                                    <span class="indicator-badge">Misión, visión, valores</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Infraestructura digital</div>
+                                <p>Plataforma tecnológica institucional (ODS 4.a.1, 4.4.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Sitio web</span>
+                                    <span class="indicator-badge">Correos institucionales</span>
+                                    <span class="indicator-badge">LinkedIn</span>
+                                    <span class="indicator-badge">Estrategia de comunicación</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Estándares institucionales</div>
+                                <p>Definición de calidad para centros miembros (ODS 4.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Definición de estándares</span>
+                                    <span class="indicator-badge">Checklist aplicable</span>
+                                    <span class="indicator-badge">Acompañamiento personalizado</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Estructura legal y gobernanza</div>
+                                <p>Marco institucional sostenible</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Análisis de opciones legales</span>
+                                    <span class="indicator-badge">Estructura de gobernanza</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Área 2: M&E -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Área 2: Sistemas de Monitoreo y Evaluación</h3>
+                            <p class="pillar-objective">Medición sistemática de resultados educativos y fortalecimiento organizacional</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">Definición de indicadores de desempeño</div>
+                                <p>Marco de medición compartido (ODS 4.1.1, 4.1.2)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Investigación de indicadores</span>
+                                    <span class="indicator-badge">Talleres participativos</span>
+                                    <span class="indicator-badge">Validación</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Sistema de seguimiento y reporte</div>
+                                <p>Dashboard y análisis de datos (ODS 4.1.1, 4.1.2)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Dashboard operativo</span>
+                                    <span class="indicator-badge">Capacitación en uso</span>
+                                    <span class="indicator-badge">Análisis y reportes</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Perfil de graduado</div>
+                                <p>Definición de resultados esperados (ODS 4.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Diagnóstico</span>
+                                    <span class="indicator-badge">Acompañamiento en diseño</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Fortalecimiento en M&E</div>
+                                <p>Construcción de capacidades de medición</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Encuesta diagnóstico</span>
+                                    <span class="indicator-badge">Plan de formación</span>
+                                    <span class="indicator-badge">Capacitaciones</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Sistematización de aprendizajes</div>
+                                <p>Gestión del conocimiento colectivo</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Formato común</span>
+                                    <span class="indicator-badge">Recopilación semestral</span>
+                                    <span class="indicator-badge">Boletín y presentaciones</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Área 3: Fortalecimiento -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Área 3: Fortalecimiento de Capacidades</h3>
+                            <p class="pillar-objective">Formación continua y desarrollo profesional de equipos educativos</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">Encuentros y retiros anuales</div>
+                                <p>Espacios de formación intensiva (ODS 4.3.1, 4.7.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">2 retiros anuales</span>
+                                    <span class="indicator-badge">Agenda participativa</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Visitas de intercambio</div>
+                                <p>Aprendizaje entre pares (ODS 4.3.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Visitas entre centros</span>
+                                    <span class="indicator-badge">Sistematización de aprendizajes</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Reuniones de comunidad</div>
+                                <p>Desarrollo profesional continuo (ODS 4.3.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Reuniones trimestrales con Directores</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Diplomados y formación</div>
+                                <p>Educación continua especializada (ODS 4.3.1, 4.7.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Diplomado GSL</span>
+                                    <span class="indicator-badge">Diagnóstico de necesidades</span>
+                                    <span class="indicator-badge">Oferta formativa</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Alianzas académicas</div>
+                                <p>Acceso a formación de calidad (ODS 4.3.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Base de datos de aliados</span>
+                                    <span class="indicator-badge">Convenios con universidades</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Área 4: Economías -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Área 4: Economías de Escala</h3>
+                            <p class="pillar-objective">Optimización de recursos mediante compras colaborativas y gestión compartida</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">Compras colaborativas</div>
+                                <p>Acceso a recursos educativos (ODS 4.a.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Diagnóstico de necesidades</span>
+                                    <span class="indicator-badge">Negociaciones colectivas</span>
+                                    <span class="indicator-badge">Proceso piloto</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Gestión de donaciones</div>
+                                <p>Infraestructura educativa (ODS 4.a.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Plantillas estándar</span>
+                                    <span class="indicator-badge">Gestión con CEMACO</span>
+                                    <span class="indicator-badge">Directorio de proveedores</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Repositorio de recursos</div>
+                                <p>Recursos digitales y materiales (ODS 4.4.1, 4.7.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Mapeo participativo</span>
+                                    <span class="indicator-badge">Repositorio digital</span>
+                                    <span class="indicator-badge">Clasificación de recursos</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Área 5: Consolidación -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Área 5: Consolidación y Expansión</h3>
+                            <p class="pillar-objective">Modelo de membresía y relacionamiento con donantes</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">Modelo de membresía</div>
+                                <p>Ampliación de impacto educativo</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Criterios de membresía</span>
+                                    <span class="indicator-badge">Proceso de solicitud</span>
+                                    <span class="indicator-badge">Implementación</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Relacionamiento con donantes</div>
+                                <p>Sostenibilidad financiera</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Materiales institucionales</span>
+                                    <span class="indicator-badge">Base de datos</span>
+                                    <span class="indicator-badge">Reuniones estratégicas</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Participación en espacios clave</div>
+                                <p>Visibilización de buenas prácticas (ODS 4.7.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Plan de acercamientos CADF 2026</span>
+                                    <span class="indicator-badge">Calendario de eventos</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Área 6: Gestión Financiera -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Área 6: Gestión Financiera</h3>
+                            <p class="pillar-objective">Administración transparente y sostenibilidad de programas</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">Presupuesto y subvenciones</div>
+                                <p>Financiamiento para programas educativos</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Presupuesto anual</span>
+                                    <span class="indicator-badge">Cartas de acuerdo</span>
+                                    <span class="indicator-badge">Seguimiento</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Estrategia de recaudación colectiva</div>
+                                <p>Sostenibilidad de iniciativas</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Diseño participativo</span>
+                                    <span class="indicator-badge">Metas definidas</span>
+                                    <span class="indicator-badge">Mecanismos de recaudación</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Monitoreo financiero</div>
+                                <p>Transparencia y accountability</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Dashboard financiero</span>
+                                    <span class="indicator-badge">Informes trimestrales</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Área 7: Incidencia -->
+                <div class="pillar-card">
+                    <div class="pillar-header" onclick="togglePillar(this)">
+                        <div>
+                            <h3 class="pillar-title">Área 7: Incidencia y Relacionamiento</h3>
+                            <p class="pillar-objective">Influencia en políticas educativas y construcción de alianzas</p>
+                        </div>
+                        <button class="expand-btn">+</button>
+                    </div>
+                    <div class="pillar-content">
+                        <ul class="kr-list">
+                            <li class="kr-item">
+                                <div class="kr-title">Estrategia de incidencia</div>
+                                <p>Influencia en políticas educativas (ODS 4.7.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Temas prioritarios</span>
+                                    <span class="indicator-badge">Mapeo de audiencias</span>
+                                    <span class="indicator-badge">Indicadores de incidencia</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Posicionamiento institucional</div>
+                                <p>Liderazgo en sector educativo</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Mapeo del ecosistema</span>
+                                    <span class="indicator-badge">Mensajes clave</span>
+                                    <span class="indicator-badge">Agenda anual</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Fortalecimiento de voceros</div>
+                                <p>Capacidades de advocacy (ODS 4.7.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Formación en incidencia</span>
+                                    <span class="indicator-badge">Guía interna</span>
+                                    <span class="indicator-badge">Designación de voceros</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Alianzas institucionales</div>
+                                <p>Colaboración multi-actor (ODS 4.7)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Identificación de actores</span>
+                                    <span class="indicator-badge">Relacionamiento</span>
+                                    <span class="indicator-badge">MoUs</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Participación en espacios de diálogo</div>
+                                <p>Incidencia activa (ODS 4.7.1)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Selección de espacios</span>
+                                    <span class="indicator-badge">Preparación de voceros</span>
+                                    <span class="indicator-badge">Participación estratégica</span>
+                                </div>
+                            </li>
+
+                            <li class="kr-item">
+                                <div class="kr-title">Generación de evidencia</div>
+                                <p>Evidencia de impacto educativo (ODS 4.1.1, 4.1.2)</p>
+                                <div class="kr-indicators">
+                                    <span class="indicator-badge">Sistematización de resultados</span>
+                                    <span class="indicator-badge">Fichas de evidencia</span>
+                                    <span class="indicator-badge">Difusión</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tres Objetivos Clave -->
+    <section id="objetivos" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Análisis por Objetivos Clave</h2>
+            <p class="section-subtitle">Desglose detallado de outcomes, indicadores y actividades de ambas organizaciones alineadas a los tres objetivos estratégicos</p>
+        </div>
+
+        <!-- Objetivo 1 -->
+        <div class="org-section" style="border-left: 5px solid var(--t4t-magenta);">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 800; color: var(--t4t-teal); margin-bottom: 30px;">
+                <span style="color: var(--t4t-magenta);">OBJETIVO 1:</span> Elevar el conocimiento y competencias del personal de las ONGs
+            </h3>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
+                <!-- Team4Tech -->
+                <div style="background: linear-gradient(135deg, #fafafa 0%, white 100%); padding: 30px; border-radius: 15px; border: 2px solid var(--t4t-cream);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 50px; background: var(--t4t-teal); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 900;">T4T</div>
+                        <h4 style="font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; color: var(--t4t-teal);">Team4Tech Outcomes</h4>
+                    </div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> 20+ recursos EBPs/trimestre sobre efectividad docente, compromiso estudiantil, sostenibilidad</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> 85% de miembros reportan aplicación de recursos CoP</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> 20% ganancia en conocimiento (pre/post assessments)</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Certificación DISC Skills</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Alfabetización en IA para ONGs africanas</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> >80% satisfacción con apoyo de Hub</li>
+                    </ul>
+                    
+                    <div style="margin-top: 25px; padding-top: 25px; border-top: 2px solid var(--t4t-cream);">
+                        <p style="font-size: 13px; font-weight: 700; color: var(--t4t-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Indicadores Clave</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;">3,300 miembros</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;">1,100 organizaciones</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;">>60% compromiso</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># certificados DISC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EduK'at -->
+                <div style="background: linear-gradient(135deg, #fafafa 0%, white 100%); padding: 30px; border-radius: 15px; border: 2px solid var(--t4t-cream);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 50px; background: var(--t4t-orange); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 900;">EK</div>
+                        <h4 style="font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; color: var(--t4t-orange);">EduK'at Outcomes</h4>
+                    </div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Diplomado GSL con seguimiento y documentación</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Plan anual de formación en M&E</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Formación en incidencia educativa y vocería</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Capacitaciones sobre uso del dashboard</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Talleres sobre estándares institucionales</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Formación a través de alianzas académicas</li>
+                    </ul>
+                    
+                    <div style="margin-top: 25px; padding-top: 25px; border-top: 2px solid var(--t4t-cream);">
+                        <p style="font-size: 13px; font-weight: 700; color: var(--t4t-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Indicadores Clave</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># participantes diplomado</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># capacitados M&E</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># directores en reuniones</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># voceros formados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--t4t-cream); padding: 25px; border-radius: 15px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                    <p style="font-size: 14px; font-weight: 700; color: var(--t4t-teal); margin: 0;">CONEXIÓN CON INDICADORES ODS4:</p>
+                    <span style="font-size: 12px; color: var(--t4t-gray); opacity: 0.8;">💡 Haz clic en cualquier badge para más información</span>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span class="connection-badge connection-strong">ODS 4.3.1 - Educación Continua</span>
+                    <span class="connection-badge connection-strong">ODS 4.7.1 - Formación Docente</span>
+                    <span class="connection-badge connection-moderate">ODS 4.4.1 - Habilidades TIC</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Objetivo 2 -->
+        <div class="org-section" style="border-left: 5px solid var(--t4t-olive); margin-top: 40px;">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 800; color: var(--t4t-teal); margin-bottom: 30px;">
+                <span style="color: var(--t4t-olive);">OBJETIVO 2:</span> Fortalecer la implementación de mejores prácticas
+            </h3>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
+                <!-- Team4Tech -->
+                <div style="background: linear-gradient(135deg, #fafafa 0%, white 100%); padding: 30px; border-radius: 15px; border: 2px solid var(--t4t-cream);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 50px; background: var(--t4t-teal); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 900;">T4T</div>
+                        <h4 style="font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; color: var(--t4t-teal);">Team4Tech Outcomes</h4>
+                    </div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> 85% reportan aplicación de recursos CoP</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> 85% reportan acceso mejorado a EBPs</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Planes de implementación DISC completados</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Implementación confirmada 4-6 meses post-piloto</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Incremento en colaboración entre ONGs</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Incremento en # de ONGs implementando EBPs</li>
+                    </ul>
+                    
+                    <div style="margin-top: 25px; padding-top: 25px; border-top: 2px solid var(--t4t-cream);">
+                        <p style="font-size: 13px; font-weight: 700; color: var(--t4t-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Indicadores Clave</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;">85% aplicación</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;">Asia: 10 colaboraciones</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;">Asia: 10 ONGs con EBPs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EduK'at -->
+                <div style="background: linear-gradient(135deg, #fafafa 0%, white 100%); padding: 30px; border-radius: 15px; border: 2px solid var(--t4t-cream);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 50px; background: var(--t4t-orange); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 900;">EK</div>
+                        <h4 style="font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; color: var(--t4t-orange);">EduK'at Outcomes</h4>
+                    </div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Estándares institucionales definidos y aplicados</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Checklist de cada estándar implementado</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Planes de apoyo individualizado según checklist</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Repositorio de recursos y metodologías compartidas</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Aprendizajes sistematizados y compartidos semestralmente</li>
+                    </ul>
+                    
+                    <div style="margin-top: 25px; padding-top: 25px; border-top: 2px solid var(--t4t-cream);">
+                        <p style="font-size: 13px; font-weight: 700; color: var(--t4t-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Indicadores Clave</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># centros con checklist</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># planes implementados</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># recursos en repositorio</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># buenas prácticas sistematizadas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--t4t-cream); padding: 25px; border-radius: 15px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                    <p style="font-size: 14px; font-weight: 700; color: var(--t4t-teal); margin: 0;">CONEXIÓN CON INDICADORES ODS4:</p>
+                    <span style="font-size: 12px; color: var(--t4t-gray); opacity: 0.8;">💡 Haz clic en cualquier badge para más información</span>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span class="connection-badge connection-strong">ODS 4.1.1 - Competencias</span>
+                    <span class="connection-badge connection-moderate">ODS 4.1.2 - Finalización</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Objetivo 3 -->
+        <div class="org-section" style="border-left: 5px solid var(--ods-blue); margin-top: 40px;">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 800; color: var(--t4t-teal); margin-bottom: 30px;">
+                <span style="color: var(--ods-blue);">OBJETIVO 3:</span> Expandir oportunidades educativas para los estudiantes
+            </h3>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
+                <!-- Team4Tech -->
+                <div style="background: linear-gradient(135deg, #fafafa 0%, white 100%); padding: 30px; border-radius: 15px; border: 2px solid var(--t4t-cream);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 50px; background: var(--t4t-teal); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 900;">T4T</div>
+                        <h4 style="font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; color: var(--t4t-teal);">Team4Tech Outcomes</h4>
+                    </div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Crecimiento continuo de acceso (3,300 miembros)</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Compromiso >60% con recursos</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Implementación de DISC Skills (empleabilidad)</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Acceso a formación en IA</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Incremento de participación en Hubs regionales</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-yellow); font-weight: 700;">→</span> Más ONGs implementando EBPs que mejoran resultados</li>
+                    </ul>
+                    
+                    <div style="margin-top: 25px; padding-top: 25px; border-top: 2px solid var(--t4t-cream);">
+                        <p style="font-size: 13px; font-weight: 700; color: var(--t4t-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Indicadores Clave</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;">3,300 miembros</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;">1,100 organizaciones</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># toolkits DISC</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># estudiantes beneficiados</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EduK'at -->
+                <div style="background: linear-gradient(135deg, #fafafa 0%, white 100%); padding: 30px; border-radius: 15px; border: 2px solid var(--t4t-cream);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 50px; background: var(--t4t-orange); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 900;">EK</div>
+                        <h4 style="font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; color: var(--t4t-orange);">EduK'at Outcomes</h4>
+                    </div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Estándares institucionales que mejoran calidad educativa</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Dashboard con seguimiento de resultados de estudiantes</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Perfil de graduado definiendo oportunidades</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Compras colaborativas mejorando recursos</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Repositorio de recursos pedagógicos accesible</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative; font-size: 15px;"><span style="position: absolute; left: 0; color: var(--t4t-orange); font-weight: 700;">→</span> Alianzas académicas ampliando oferta educativa</li>
+                    </ul>
+                    
+                    <div style="margin-top: 25px; padding-top: 25px; border-top: 2px solid var(--t4t-cream);">
+                        <p style="font-size: 13px; font-weight: 700; color: var(--t4t-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Indicadores Clave</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># estudiantes beneficiados</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># centros con dashboard</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># recursos pedagógicos</span>
+                            <span style="background: var(--t4t-cream); padding: 6px 14px; border-radius: 15px; font-size: 13px; font-weight: 600;"># alianzas académicas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--t4t-cream); padding: 25px; border-radius: 15px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                    <p style="font-size: 14px; font-weight: 700; color: var(--t4t-teal); margin: 0;">CONEXIÓN CON INDICADORES ODS4:</p>
+                    <span style="font-size: 12px; color: var(--t4t-gray); opacity: 0.8;">💡 Haz clic en cualquier badge para más información</span>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span class="connection-badge connection-strong">ODS 4.4.1 - Habilidades TIC</span>
+                    <span class="connection-badge connection-strong">ODS 4.a.1 - Infraestructura</span>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabla de Intersecciones -->
+    <section id="intersecciones" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Tabla Resumen de Intersecciones</h2>
+            <p class="section-subtitle">Matriz completa de alineación entre indicadores ODS4, iniciativas de ambas organizaciones y los tres objetivos estratégicos</p>
+        </div>
+
+        <div class="comparison-table">
+            <div class="table-header">
+                <div>Indicador ODS4</div>
+                <div>Team4Tech</div>
+                <div>EduK'at</div>
+                <div>Conexión Objetivos</div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="table-cell-title">4.1.1 - Competencia lectura/matemáticas</div>
+                    <div class="table-cell-subtitle">Nivel mínimo de competencia</div>
+                </div>
+                <div class="table-cell">
+                    KR 1.3 (20% ganancia), KR 3.1-3.5 (M&E)
+                </div>
+                <div class="table-cell">
+                    Dashboard, Indicadores, Perfil de graduado
+                </div>
+                <div class="table-cell">
+                    <span class="connection-badge connection-strong">Objetivo 2</span>
+                    <span class="connection-badge connection-moderate">Objetivo 3</span>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="table-cell-title">4.1.2 - Tasa de finalización</div>
+                    <div class="table-cell-subtitle">Porcentaje de cohorte que completa</div>
+                </div>
+                <div class="table-cell">
+                    KR 3.3 (seguimiento), KR 2.5 (EBPs de retención)
+                </div>
+                <div class="table-cell">
+                    Dashboard, Estándares, Sistema de seguimiento
+                </div>
+                <div class="table-cell">
+                    <span class="connection-badge connection-strong">Objetivo 2</span>
+                    <span class="connection-badge connection-moderate">Objetivo 3</span>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    
+                    <div class="table-cell-subtitle">Participación en aprendizaje organizado</div>
+                </div>
+                <div class="table-cell">
+                    Recursos EBPs, Toolkits DISC
+                </div>
+                <div class="table-cell">
+                    Centros con preescolar, Estándares
+                </div>
+                <div class="table-cell">
+                    <span class="connection-badge connection-weak">Objetivo 3</span>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="table-cell-title">4.3.1 - Educación continua</div>
+                    <div class="table-cell-subtitle">Participación en formación</div>
+                </div>
+                <div class="table-cell">
+                    KR 1.1-1.3 (CoP completo), Cursos DISC, IA
+                </div>
+                <div class="table-cell">
+                    Diplomado GSL, Reuniones trimestrales, Alianzas
+                </div>
+                <div class="table-cell">
+                    <span class="connection-badge connection-strong">OBJETIVO 1</span>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="table-cell-title">4.4.1 - Habilidades TIC</div>
+                    <div class="table-cell-subtitle">Competencias digitales</div>
+                </div>
+                <div class="table-cell">
+                    CoP digital, Formación IA, Recursos digitales
+                </div>
+                <div class="table-cell">
+                    Infraestructura digital, Dashboard, Repositorio
+                </div>
+                <div class="table-cell">
+                    <span class="connection-badge connection-strong">Objetivo 1</span>
+                    <span class="connection-badge connection-strong">Objetivo 3</span>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="table-cell-title">4.7.1 - EDS/ECG y formación docente</div>
+                    <div class="table-cell-subtitle">Integración en políticas y currículo</div>
+                </div>
+                <div class="table-cell">
+                    Formación ONGs, EBPs pedagógicas, DISC Skills
+                </div>
+                <div class="table-cell">
+                    Diplomado GSL, Plan formación, Incidencia
+                </div>
+                <div class="table-cell">
+                    <span class="connection-badge connection-strong">OBJETIVO 1</span>
+                    <span class="connection-badge connection-moderate">Objetivo 2</span>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="table-cell-title">4.a.1 - Infraestructura</div>
+                    <div class="table-cell-subtitle">Servicios básicos en escuelas</div>
+                </div>
+                <div class="table-cell">
+                    Recursos sobre infraestructura, Proyectos voluntarios
+                </div>
+                <div class="table-cell">
+                    Compras colaborativas, Donaciones (CEMACO)
+                </div>
+                <div class="table-cell">
+                    <span class="connection-badge connection-strong">Objetivo 3</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recomendaciones -->
+    <section id="recomendaciones" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Recomendaciones Estratégicas</h2>
+            <p class="section-subtitle">Oportunidades de mejora y fortalecimiento para maximizar el impacto en ODS4</p>
+        </div>
+
+        <div class="recommendations-grid">
+            <!-- Team4Tech -->
+            <div class="recommendation-card">
+                <div class="recommendation-header">
+                    <div class="recommendation-icon">💡</div>
+                    <h3 class="recommendation-title">Para Team4Tech</h3>
+                </div>
+                <ul class="recommendation-list">
+                    <li>Fortalecer medición de impacto directo en estudiantes, más allá del M&E de ONGs</li>
+                    <li>Expandir toolkits DISC a más competencias del siglo XXI</li>
+                    <li>Documentar conexiones explícitas con ODS4 en reportes</li>
+                    <li>Amplificar modelo de Hubs regionales como caso de éxito de colaboración</li>
+                </ul>
+            </div>
+
+            <!-- EduK'at -->
+            <div class="recommendation-card">
+                <div class="recommendation-header">
+                    <div class="recommendation-icon">💡</div>
+                    <h3 class="recommendation-title">Para EduK'at</h3>
+                </div>
+                <ul class="recommendation-list">
+                    <li>Priorizar desarrollo del dashboard de estudiantes para medir 4.1.1 y 4.1.2</li>
+                    <li>Establecer pre/post assessments para medir impacto de formaciones</li>
+                    <li>Cuantificar beneficios de economías de escala e impacto en recursos</li>
+                    <li>Vincular evidencia de incidencia explícitamente con indicadores ODS4</li>
+                </ul>
+            </div>
+
+            <!-- Colaboración -->
+            <div class="recommendation-card">
+                <div class="recommendation-header">
+                    <div class="recommendation-icon">🤝</div>
+                    <h3 class="recommendation-title">Oportunidades de Colaboración</h3>
+                </div>
+                <ul class="recommendation-list">
+                    <li>Intercambio de prácticas M&E: Team4Tech podría compartir su sistema con EduK'at</li>
+                    <li>Modelo CoP replicable: Inspirar estructura de encuentros de EduK'at</li>
+                    <li>Toolkits compartidos: Adaptar toolkits DISC para centros de EduK'at</li>
+                    <li>Dashboard integrado: Aprender de mejores prácticas mutuas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre este Análisis</h3>
+                <p>Este documento presenta un análisis integral de la alineación entre los indicadores del Objetivo de Desarrollo Sostenible 4 (Educación de Calidad) y los planes operativos 2026 de Team4Tech y EduK'at.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Organizaciones</h3>
+                <ul>
+                    <li><a href="https://team4tech.org">Team4Tech</a></li>
+                    <li>EduK'at Guatemala</li>
+                    <li>Red de Centros Educativos</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>ODS4 - Educación de Calidad</h3>
+                <ul>
+                    <li>Naciones Unidas</li>
+                    <li>Agenda 2030</li>
+                    <li>Desarrollo Sostenible</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Año Fiscal</h3>
+                <p>FY2026</p>
+                <p>Versión 1.0</p>
+                <p>Febrero 2026</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Análisis ODS4 - Team4Tech & EduK'at. Documento de trabajo estratégico.</p>
+        </div>
+    </div>
+
+    <!-- Modal Overlay para información ODS -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-indicator" id="modalIndicator"></div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de los indicadores ODS
+        const odsData = {
+            '4.1.1': {
+                indicator: 'ODS 4.1.1',
+                title: 'Nivel Mínimo de Competencia en Lectura y Matemáticas',
+                definition: 'Proporción de niños y jóvenes que alcanzan al menos un nivel mínimo de competencia en lectura y matemáticas, por sexo.',
+                levels: 'Se mide en tres momentos clave: grados 2/3 de primaria, al final de la primaria, y al final de la secundaria inferior.',
+                relevance: 'Este indicador mide directamente los resultados de aprendizaje y la calidad educativa. Es fundamental para evaluar si los estudiantes están adquiriendo las competencias básicas necesarias para su desarrollo.',
+                connections: [
+                    '<strong>Team4Tech:</strong> KR 1.3 mide 20% de ganancia en conocimiento mediante pre/post assessments',
+                    '<strong>Team4Tech:</strong> Todo el sistema de M&E (KR 3.1-3.5) está diseñado para medir resultados de aprendizaje',
+                    '<strong>EduK\'at:</strong> Dashboard para seguimiento de resultados estudiantiles',
+                    '<strong>EduK\'at:</strong> Definición de indicadores de desempeño institucional',
+                    '<strong>EduK\'at:</strong> Perfil de graduado con resultados de aprendizaje claros'
+                ],
+                tags: ['Resultados de aprendizaje', 'Evaluación', 'Calidad educativa', 'Competencias básicas']
+            },
+            '4.1.2': {
+                indicator: 'ODS 4.1.2',
+                title: 'Tasa de Finalización Educativa',
+                definition: 'Porcentaje de una cohorte de edad que completa educación primaria, secundaria inferior y secundaria superior.',
+                levels: 'Se calcula 3-5 años después de la edad oficial de graduación para permitir retrasos en la trayectoria educativa.',
+                relevance: 'Mide el acceso efectivo y la permanencia escolar. No basta con inscribirse, los estudiantes deben completar su educación. Este indicador revela barreras sistémicas que impiden la finalización.',
+                connections: [
+                    '<strong>Team4Tech:</strong> Sistema de M&E (KR 3.3) para seguimiento de ONGs',
+                    '<strong>Team4Tech:</strong> Implementación de prácticas basadas en evidencia que mejoran retención (KR 2.5)',
+                    '<strong>EduK\'at:</strong> Dashboard con sistema de seguimiento de estudiantes',
+                    '<strong>EduK\'at:</strong> Estándares institucionales que incluyen seguimiento de trayectorias',
+                    '<strong>EduK\'at:</strong> Indicadores de desempeño que monitorean permanencia'
+                ],
+                tags: ['Acceso', 'Permanencia', 'Retención escolar', 'Trayectorias educativas']
+            },
+            
+            
+            '4.3.1': {
+                indicator: 'ODS 4.3.1',
+                title: 'Participación en Educación Formal y No Formal',
+                definition: 'Proporción de jóvenes y adultos que participan en enseñanza y formación académica o no académica en los últimos 12 meses, por sexo.',
+                levels: 'Incluye tanto formación formal (títulos, diplomas) como no formal (talleres, cursos, capacitaciones).',
+                relevance: 'El aprendizaje no termina en la escuela. Este indicador mide el acceso a educación continua y desarrollo profesional, crítico para la empleabilidad y adaptación a cambios tecnológicos.',
+                connections: [
+                    '<strong>Team4Tech - CONEXIÓN DIRECTA:</strong> Todo el modelo de Comunidad de Práctica es educación continua para adultos',
+                    '<strong>Team4Tech:</strong> 3,300 miembros accediendo a formación continua (KR 1.1)',
+                    '<strong>Team4Tech:</strong> 20+ recursos compartidos/trimestre',
+                    '<strong>Team4Tech:</strong> Cursos DISC Skills con certificación',
+                    '<strong>Team4Tech:</strong> Formación en inteligencia artificial',
+                    '<strong>EduK\'at - CONEXIÓN DIRECTA:</strong> Encuentros y retiros anuales',
+                    '<strong>EduK\'at:</strong> Diplomado GSL para líderes educativos',
+                    '<strong>EduK\'at:</strong> Reuniones trimestrales de comunidad de práctica',
+                    '<strong>EduK\'at:</strong> Alianzas con universidades para formación continua'
+                ],
+                tags: ['Educación continua', 'Aprendizaje adultos', 'Desarrollo profesional', 'Empleabilidad']
+            },
+            '4.4.1': {
+                indicator: 'ODS 4.4.1',
+                title: 'Habilidades en Tecnologías de la Información',
+                definition: 'Proporción de jóvenes y adultos con competencias en tecnologías de la información y las comunicaciones (TIC), por tipo de competencia técnica.',
+                levels: 'Incluye competencias desde uso básico de computadoras hasta programación y análisis de datos.',
+                relevance: 'Las habilidades TIC son esenciales para el empleo del siglo XXI. La brecha digital limita oportunidades económicas y sociales. Este indicador mide si las personas tienen las competencias para participar en la economía digital.',
+                connections: [
+                    '<strong>Team4Tech - CONEXIÓN DIRECTA:</strong> Comunidad de Práctica digital con 3,300+ miembros',
+                    '<strong>Team4Tech:</strong> Formación en inteligencia artificial (KR 1.6)',
+                    '<strong>Team4Tech:</strong> Recursos sobre tecnología y herramientas digitales',
+                    '<strong>Team4Tech:</strong> Apoyo a gobiernos en estrategias digitales',
+                    '<strong>EduK\'at - CONEXIÓN DIRECTA:</strong> Infraestructura digital completa (sitio web, LinkedIn)',
+                    '<strong>EduK\'at:</strong> Dashboard digital para seguimiento',
+                    '<strong>EduK\'at:</strong> Repositorio digital de recursos',
+                    '<strong>EduK\'at:</strong> Capacitaciones en uso de plataformas digitales'
+                ],
+                tags: ['Competencias digitales', 'Tecnología', 'Empleabilidad', 'Alfabetización digital']
+            },
+            '4.7.1': {
+                indicator: 'ODS 4.7.1',
+                title: 'Educación para el Desarrollo Sostenible y Formación Docente',
+                definition: 'Grado en que la Educación para el Desarrollo Sostenible (EDS) y la Educación para la Ciudadanía Global (ECG) se integran en: (a) políticas educativas nacionales; (b) planes de estudio; (c) formación docente; y (d) evaluación de estudiantes.',
+                levels: 'Se evalúa en cuatro dimensiones: políticas, currículo, capacitación de maestros y evaluación.',
+                relevance: 'Los docentes bien formados son la clave de la calidad educativa. Este indicador mide si los sistemas educativos invierten en el desarrollo profesional continuo de maestros y si integran valores de sostenibilidad y ciudadanía global.',
+                connections: [
+                    '<strong>Team4Tech - CONEXIÓN DIRECTA:</strong> Formación continua a educadores de ONGs',
+                    '<strong>Team4Tech:</strong> Cursos sobre prácticas pedagógicas basadas en evidencia',
+                    '<strong>Team4Tech:</strong> DISC Skills alineadas con competencias del siglo XXI',
+                    '<strong>Team4Tech:</strong> Regional Hubs con formación contextualizada',
+                    '<strong>EduK\'at - CONEXIÓN DIRECTA:</strong> Diplomado GSL (liderazgo educativo)',
+                    '<strong>EduK\'at:</strong> Plan de formación continua para docentes y directores',
+                    '<strong>EduK\'at:</strong> Alianzas académicas con universidades',
+                    '<strong>EduK\'at:</strong> Repositorio de recursos pedagógicos',
+                    '<strong>EduK\'at:</strong> Incidencia en políticas educativas'
+                ],
+                tags: ['Formación docente', 'Desarrollo profesional', 'Políticas educativas', 'Calidad pedagógica']
+            },
+            '4.a.1': {
+                indicator: 'ODS 4.a.1',
+                title: 'Servicios Básicos e Infraestructura en Escuelas',
+                definition: 'Proporción de escuelas que ofrecen servicios básicos, por tipo de servicio: electricidad, internet para fines pedagógicos, computadoras para fines pedagógicos, infraestructura y materiales adaptados para estudiantes con discapacidad, agua potable básica, instalaciones de saneamiento básicas segregadas por sexo, e instalaciones básicas para lavado de manos.',
+                levels: 'Evalúa siete tipos de servicios básicos esenciales para un ambiente de aprendizaje efectivo.',
+                relevance: 'No se puede aprender efectivamente sin condiciones básicas. Este indicador mide si las escuelas tienen la infraestructura mínima necesaria para la enseñanza del siglo XXI y condiciones dignas de salud.',
+                connections: [
+                    '<strong>Team4Tech:</strong> Recursos de CoP sobre infraestructura educativa',
+                    '<strong>Team4Tech:</strong> Proyectos de voluntarios enfocados en infraestructura tecnológica',
+                    '<strong>EduK\'at - CONEXIÓN DIRECTA:</strong> Compras colaborativas para infraestructura',
+                    '<strong>EduK\'at:</strong> Gestión de donaciones (ejemplo: CEMACO para construcción)',
+                    '<strong>EduK\'at:</strong> Economías de escala para tecnología, plataformas y útiles',
+                    '<strong>EduK\'at:</strong> Estándares institucionales que incluyen infraestructura básica'
+                ],
+                tags: ['Infraestructura', 'Tecnología', 'Condiciones básicas', 'Agua y saneamiento']
+            }
+        };
+
+        // Función para abrir modal
+        function openModal(odsKey) {
+            const data = odsData[odsKey];
+            if (!data) return;
+
+            document.getElementById('modalIndicator').textContent = data.indicator;
+            document.getElementById('modalTitle').textContent = data.title;
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="modal-section">
+                    <h4 class="modal-section-title">📋 Definición</h4>
+                    <p class="modal-text">${data.definition}</p>
+                </div>
+
+                ${data.levels ? `
+                <div class="modal-section">
+                    <h4 class="modal-section-title">📊 Niveles de Medición</h4>
+                    <p class="modal-text">${data.levels}</p>
+                </div>
+                ` : ''}
+
+                <div class="modal-section">
+                    <h4 class="modal-section-title">⭐ Relevancia</h4>
+                    <div class="highlight-box">
+                        <p>${data.relevance}</p>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h4 class="modal-section-title">🔗 Conexiones con Planes de Trabajo</h4>
+                    <ul class="connection-list">
+                        ${data.connections.map(conn => `<li>${conn}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="modal-section">
+                    <h4 class="modal-section-title">🏷️ Etiquetas</h4>
+                    <div class="modal-tags-container">
+                        ${data.tags.map(tag => `<span class="modal-tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Función para cerrar modal
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Hacer clickeables todas las tarjetas ODS
+        document.querySelectorAll('.ods-card').forEach(card => {
+            const odsNumber = card.querySelector('.ods-number');
+            if (odsNumber) {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', function() {
+                    const indicator = odsNumber.textContent.trim();
+                    openModal(indicator);
+                });
+            }
+        });
+
+        // Hacer clickeables todos los badges de conexión
+        document.querySelectorAll('.connection-badge').forEach(badge => {
+            badge.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const text = this.textContent.trim();
+                // Extraer el número del indicador con mejor regex
+                // Busca patrones como: "4.1.1", "4.a.1", "4.2.2", etc.
+                const match = text.match(/(\d+\.[a-z\d]+\.\d+|\d+\.\d+\.\d+)/i);
+                if (match) {
+                    openModal(match[1]);
+                }
+            });
+        });
+
+        // Toggle pillar content
+        function togglePillar(header) {
+            const content = header.nextElementSibling;
+            const btn = header.querySelector('.expand-btn');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                btn.textContent = '+';
+                btn.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('expanded');
+                btn.textContent = '−';
+                btn.style.transform = 'rotate(90deg)';
+            }
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update active link
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Intersection Observer for scroll spy
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section, .impact-section').forEach(section => {
+            if (section.id) {
+                observer.observe(section);
+            }
+        });
+
+        // Animate on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            fadeObserver.observe(el);
+        });
+
+        // Print/Save functionality
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+        });
+
+        // Copy indicator codes on click
+        document.querySelectorAll('.ods-number').forEach(element => {
+            element.addEventListener('click', function() {
+                const text = this.textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    const original = this.textContent;
+                    this.textContent = '✓';
+                    setTimeout(() => {
+                        this.textContent = original;
+                    }, 1500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
